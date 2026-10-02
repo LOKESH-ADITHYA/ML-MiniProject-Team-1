@@ -1,0 +1,121 @@
+model,subject,features,test_day,params
+Lasso,S1,all,1,{'lasso__alpha': np.float64(0.001)}
+Lasso,S1,all,2,{'lasso__alpha': np.float64(0.001)}
+Lasso,S1,all,3,{'lasso__alpha': np.float64(0.01)}
+Lasso,S1,all,4,{'lasso__alpha': np.float64(0.00046415888336127773)}
+Lasso,S1,all,5,{'lasso__alpha': np.float64(0.00046415888336127773)}
+Lasso,S1,step+emg,1,{'lasso__alpha': np.float64(0.001)}
+Lasso,S1,step+emg,2,{'lasso__alpha': np.float64(0.0001)}
+Lasso,S1,step+emg,3,{'lasso__alpha': np.float64(0.01)}
+Lasso,S1,step+emg,4,{'lasso__alpha': np.float64(0.001)}
+Lasso,S1,step+emg,5,{'lasso__alpha': np.float64(0.0001)}
+Lasso,S2,all,1,{'lasso__alpha': np.float64(0.021544346900318822)}
+Lasso,S2,all,2,{'lasso__alpha': np.float64(0.01)}
+Lasso,S2,all,3,{'lasso__alpha': np.float64(0.021544346900318822)}
+Lasso,S2,all,4,{'lasso__alpha': np.float64(0.004641588833612777)}
+Lasso,S2,all,5,{'lasso__alpha': np.float64(0.01)}
+Lasso,S2,step+emg,1,{'lasso__alpha': np.float64(0.021544346900318822)}
+Lasso,S2,step+emg,2,{'lasso__alpha': np.float64(0.1)}
+Lasso,S2,step+emg,3,{'lasso__alpha': np.float64(0.01)}
+Lasso,S2,step+emg,4,{'lasso__alpha': np.float64(0.01)}
+Lasso,S2,step+emg,5,{'lasso__alpha': np.float64(0.01)}
+Ridge,S1,all,1,{'ridge__alpha': np.float64(10.0)}
+Ridge,S1,all,2,{'ridge__alpha': np.float64(10.0)}
+Ridge,S1,all,3,{'ridge__alpha': np.float64(31.622776601683793)}
+Ridge,S1,all,4,{'ridge__alpha': np.float64(3.1622776601683795)}
+Ridge,S1,all,5,{'ridge__alpha': np.float64(3.1622776601683795)}
+Ridge,S1,step+emg,1,{'ridge__alpha': np.float64(10.0)}
+Ridge,S1,step+emg,2,{'ridge__alpha': np.float64(10.0)}
+Ridge,S1,step+emg,3,{'ridge__alpha': np.float64(31.622776601683793)}
+Ridge,S1,step+emg,4,{'ridge__alpha': np.float64(10.0)}
+Ridge,S1,step+emg,5,{'ridge__alpha': np.float64(0.001)}
+Ridge,S2,all,1,{'ridge__alpha': np.float64(1000.0)}
+Ridge,S2,all,2,{'ridge__alpha': np.float64(1000.0)}
+Ridge,S2,all,3,{'ridge__alpha': np.float64(100.0)}
+Ridge,S2,all,4,{'ridge__alpha': np.float64(10.0)}
+Ridge,S2,all,5,{'ridge__alpha': np.float64(100.0)}
+Ridge,S2,step+emg,1,{'ridge__alpha': np.float64(1000.0)}
+Ridge,S2,step+emg,2,{'ridge__alpha': np.float64(1000.0)}
+Ridge,S2,step+emg,3,{'ridge__alpha': np.float64(1000.0)}
+Ridge,S2,step+emg,4,{'ridge__alpha': np.float64(10.0)}
+Ridge,S2,step+emg,5,{'ridge__alpha': np.float64(100.0)}
+ElasticNet,S1,all,1,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 0.1}"
+ElasticNet,S1,all,2,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 0.1}"
+ElasticNet,S1,all,3,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 0.9}"
+ElasticNet,S1,all,4,"{'elasticnet__alpha': np.float64(0.0031622776601683794), 'elasticnet__l1_ratio': 0.1}"
+ElasticNet,S1,all,5,"{'elasticnet__alpha': np.float64(0.001), 'elasticnet__l1_ratio': 0.5}"
+ElasticNet,S1,step+emg,1,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 0.1}"
+ElasticNet,S1,step+emg,2,"{'elasticnet__alpha': np.float64(0.0031622776601683794), 'elasticnet__l1_ratio': 0.1}"
+ElasticNet,S1,step+emg,3,"{'elasticnet__alpha': np.float64(0.1), 'elasticnet__l1_ratio': 0.1}"
+ElasticNet,S1,step+emg,4,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 0.1}"
+ElasticNet,S1,step+emg,5,"{'elasticnet__alpha': np.float64(0.0001), 'elasticnet__l1_ratio': 0.1}"
+ElasticNet,S2,all,1,"{'elasticnet__alpha': np.float64(0.0031622776601683794), 'elasticnet__l1_ratio': 0.5}"
+ElasticNet,S2,all,2,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 1.0}"
+ElasticNet,S2,all,3,"{'elasticnet__alpha': np.float64(0.03162277660168379), 'elasticnet__l1_ratio': 0.9}"
+ElasticNet,S2,all,4,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 0.5}"
+ElasticNet,S2,all,5,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 1.0}"
+ElasticNet,S2,step+emg,1,"{'elasticnet__alpha': np.float64(0.03162277660168379), 'elasticnet__l1_ratio': 0.9}"
+ElasticNet,S2,step+emg,2,"{'elasticnet__alpha': np.float64(0.1), 'elasticnet__l1_ratio': 0.9}"
+ElasticNet,S2,step+emg,3,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 1.0}"
+ElasticNet,S2,step+emg,4,"{'elasticnet__alpha': np.float64(0.01), 'elasticnet__l1_ratio': 0.9}"
+ElasticNet,S2,step+emg,5,"{'elasticnet__alpha': np.float64(0.03162277660168379), 'elasticnet__l1_ratio': 0.5}"
+PLS,S1,all,1,{'pls__n_components': 4}
+PLS,S1,all,2,{'pls__n_components': 4}
+PLS,S1,all,3,{'pls__n_components': 3}
+PLS,S1,all,4,{'pls__n_components': 4}
+PLS,S1,all,5,{'pls__n_components': 9}
+PLS,S1,step+emg,1,{'pls__n_components': 5}
+PLS,S1,step+emg,2,{'pls__n_components': 4}
+PLS,S1,step+emg,3,{'pls__n_components': 3}
+PLS,S1,step+emg,4,{'pls__n_components': 4}
+PLS,S1,step+emg,5,{'pls__n_components': 13}
+PLS,S2,all,1,{'pls__n_components': 13}
+PLS,S2,all,2,{'pls__n_components': 1}
+PLS,S2,all,3,{'pls__n_components': 2}
+PLS,S2,all,4,{'pls__n_components': 4}
+PLS,S2,all,5,{'pls__n_components': 2}
+PLS,S2,step+emg,1,{'pls__n_components': 1}
+PLS,S2,step+emg,2,{'pls__n_components': 1}
+PLS,S2,step+emg,3,{'pls__n_components': 2}
+PLS,S2,step+emg,4,{'pls__n_components': 5}
+PLS,S2,step+emg,5,{'pls__n_components': 2}
+SVR,S1,all,1,"{'svr__C': 30, 'svr__epsilon': 0.005, 'svr__gamma': 0.003}"
+SVR,S1,all,2,"{'svr__C': 3, 'svr__epsilon': 0.005, 'svr__gamma': 0.001}"
+SVR,S1,all,3,"{'svr__C': 3, 'svr__epsilon': 0.05, 'svr__gamma': 0.001}"
+SVR,S1,all,4,"{'svr__C': 10, 'svr__epsilon': 0.1, 'svr__gamma': 0.001}"
+SVR,S1,all,5,"{'svr__C': 30, 'svr__epsilon': 0.05, 'svr__gamma': 0.001}"
+SVR,S1,step+emg,1,"{'svr__C': 10, 'svr__epsilon': 0.05, 'svr__gamma': 0.01}"
+SVR,S1,step+emg,2,"{'svr__C': 3, 'svr__epsilon': 0.005, 'svr__gamma': 0.001}"
+SVR,S1,step+emg,3,"{'svr__C': 3, 'svr__epsilon': 0.1, 'svr__gamma': 0.001}"
+SVR,S1,step+emg,4,"{'svr__C': 10, 'svr__epsilon': 0.1, 'svr__gamma': 0.001}"
+SVR,S1,step+emg,5,"{'svr__C': 10, 'svr__epsilon': 0.05, 'svr__gamma': 0.001}"
+SVR,S2,all,1,"{'svr__C': 30, 'svr__epsilon': 0.1, 'svr__gamma': 0.001}"
+SVR,S2,all,2,"{'svr__C': 100, 'svr__epsilon': 0.02, 'svr__gamma': 0.001}"
+SVR,S2,all,3,"{'svr__C': 1, 'svr__epsilon': 0.02, 'svr__gamma': 0.001}"
+SVR,S2,all,4,"{'svr__C': 0.3, 'svr__epsilon': 0.05, 'svr__gamma': 0.001}"
+SVR,S2,all,5,"{'svr__C': 3, 'svr__epsilon': 0.005, 'svr__gamma': 0.001}"
+SVR,S2,step+emg,1,"{'svr__C': 100, 'svr__epsilon': 0.1, 'svr__gamma': 0.001}"
+SVR,S2,step+emg,2,"{'svr__C': 0.1, 'svr__epsilon': 0.005, 'svr__gamma': 0.001}"
+SVR,S2,step+emg,3,"{'svr__C': 0.1, 'svr__epsilon': 0.02, 'svr__gamma': 0.001}"
+SVR,S2,step+emg,4,"{'svr__C': 0.3, 'svr__epsilon': 0.005, 'svr__gamma': 0.001}"
+SVR,S2,step+emg,5,"{'svr__C': 1, 'svr__epsilon': 0.02, 'svr__gamma': 0.001}"
+KernelRidge,S1,all,1,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.003}"
+KernelRidge,S1,all,2,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S1,all,3,"{'regressor__kernelridge__alpha': 0.1, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S1,all,4,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S1,all,5,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S1,step+emg,1,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.003}"
+KernelRidge,S1,step+emg,2,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S1,step+emg,3,"{'regressor__kernelridge__alpha': 0.1, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S1,step+emg,4,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S1,step+emg,5,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S2,all,1,"{'regressor__kernelridge__alpha': 10, 'regressor__kernelridge__gamma': 0.01}"
+KernelRidge,S2,all,2,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.003}"
+KernelRidge,S2,all,3,"{'regressor__kernelridge__alpha': 0.1, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S2,all,4,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.003}"
+KernelRidge,S2,all,5,"{'regressor__kernelridge__alpha': 0.1, 'regressor__kernelridge__gamma': 0.001}"
+KernelRidge,S2,step+emg,1,"{'regressor__kernelridge__alpha': 10, 'regressor__kernelridge__gamma': 0.03}"
+KernelRidge,S2,step+emg,2,"{'regressor__kernelridge__alpha': 10, 'regressor__kernelridge__gamma': 0.01}"
+KernelRidge,S2,step+emg,3,"{'regressor__kernelridge__alpha': 10, 'regressor__kernelridge__gamma': 0.01}"
+KernelRidge,S2,step+emg,4,"{'regressor__kernelridge__alpha': 0.01, 'regressor__kernelridge__gamma': 0.003}"
+KernelRidge,S2,step+emg,5,"{'regressor__kernelridge__alpha': 1, 'regressor__kernelridge__gamma': 0.003}"

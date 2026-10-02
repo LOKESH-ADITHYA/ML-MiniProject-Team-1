@@ -1,0 +1,85 @@
+subject,variant,n_features,model,protocol,mse
+S1,base (step+emg),25,Ridge,lodo,0.016367072303389588
+S1,base (step+emg),25,Ridge,kfold,0.009621706777584614
+S1,base (step+emg),25,Lasso,lodo,0.02465393675939864
+S1,base (step+emg),25,Lasso,kfold,0.010284868352672557
+S1,base (step+emg),25,BayesianRidge,lodo,0.015909713341992957
+S1,base (step+emg),25,BayesianRidge,kfold,0.00968091801196166
+S1,+symmetry,33,Ridge,lodo,0.01660688001490288
+S1,+symmetry,33,Ridge,kfold,0.009883431531104535
+S1,+symmetry,33,Lasso,lodo,0.02441415946678546
+S1,+symmetry,33,Lasso,kfold,0.010434792990290482
+S1,+symmetry,33,BayesianRidge,lodo,0.015919088076634072
+S1,+symmetry,33,BayesianRidge,kfold,0.009750975746239187
+S1,+emg_bilateral,33,Ridge,lodo,0.01690724075704951
+S1,+emg_bilateral,33,Ridge,kfold,0.009701909874247521
+S1,+emg_bilateral,33,Lasso,lodo,0.023868895300209768
+S1,+emg_bilateral,33,Lasso,kfold,0.010315457204876028
+S1,+emg_bilateral,33,BayesianRidge,lodo,0.016114689513307048
+S1,+emg_bilateral,33,BayesianRidge,kfold,0.00968703062744516
+S1,+emg_summary,29,Ridge,lodo,0.01635989848426123
+S1,+emg_summary,29,Ridge,kfold,0.009754489563437017
+S1,+emg_summary,29,Lasso,lodo,0.025143668332548965
+S1,+emg_summary,29,Lasso,kfold,0.010628328494934315
+S1,+emg_summary,29,BayesianRidge,lodo,0.015943718210166862
+S1,+emg_summary,29,BayesianRidge,kfold,0.009652002186020081
+S1,+all three,45,Ridge,lodo,0.01644727509252107
+S1,+all three,45,Ridge,kfold,0.010091339476165142
+S1,+all three,45,Lasso,lodo,0.02512243151559545
+S1,+all three,45,Lasso,kfold,0.010940469441406498
+S1,+all three,45,BayesianRidge,lodo,0.01617417142091554
+S1,+all three,45,BayesianRidge,kfold,0.009746838385017224
+S1,+interactions (top 3),28,Ridge,lodo,0.01740000812823422
+S1,+interactions (top 3),28,Ridge,kfold,0.009456468990158987
+S1,+interactions (top 5),35,Ridge,lodo,0.018017548332784548
+S1,+interactions (top 5),35,Ridge,kfold,0.009437405142170128
+S1,+interactions (top 8),53,Ridge,lodo,0.023053546651547904
+S1,+interactions (top 8),53,Ridge,kfold,0.009689778368811314
+S1,day-centred features,25,Ridge,lodo,0.08380906934777979
+S1,day-centred features,25,Ridge,kfold,0.061053650245767054
+S1,day-centred features,25,Lasso,lodo,0.09166976220004486
+S1,day-centred features,25,Lasso,kfold,0.06663589252141515
+S1,day-centred features,25,BayesianRidge,lodo,0.08300554796878254
+S1,day-centred features,25,BayesianRidge,kfold,0.06143195778597917
+S2,base (step+emg),25,Ridge,lodo,0.049296670546260114
+S2,base (step+emg),25,Ridge,kfold,0.014537314061727638
+S2,base (step+emg),25,Lasso,lodo,0.034627237059307495
+S2,base (step+emg),25,Lasso,kfold,0.014303357709898332
+S2,base (step+emg),25,BayesianRidge,lodo,0.06405083307525138
+S2,base (step+emg),25,BayesianRidge,kfold,0.014762157689935426
+S2,+symmetry,33,Ridge,lodo,0.04846944629120618
+S2,+symmetry,33,Ridge,kfold,0.014807032537502193
+S2,+symmetry,33,Lasso,lodo,0.033277686609948176
+S2,+symmetry,33,Lasso,kfold,0.014316543435191492
+S2,+symmetry,33,BayesianRidge,lodo,0.06543201037678754
+S2,+symmetry,33,BayesianRidge,kfold,0.014842095158797114
+S2,+emg_bilateral,33,Ridge,lodo,0.045516656952168284
+S2,+emg_bilateral,33,Ridge,kfold,0.014232656890578834
+S2,+emg_bilateral,33,Lasso,lodo,0.034765777520026464
+S2,+emg_bilateral,33,Lasso,kfold,0.01463728143874252
+S2,+emg_bilateral,33,BayesianRidge,lodo,0.06319385983746931
+S2,+emg_bilateral,33,BayesianRidge,kfold,0.0146519715873964
+S2,+emg_summary,29,Ridge,lodo,0.046484742577094076
+S2,+emg_summary,29,Ridge,kfold,0.014148155556702216
+S2,+emg_summary,29,Lasso,lodo,0.035076689502864265
+S2,+emg_summary,29,Lasso,kfold,0.01440781718427303
+S2,+emg_summary,29,BayesianRidge,lodo,0.06260917755192379
+S2,+emg_summary,29,BayesianRidge,kfold,0.014687202243251435
+S2,+all three,45,Ridge,lodo,0.04280002782463013
+S2,+all three,45,Ridge,kfold,0.014038539273939613
+S2,+all three,45,Lasso,lodo,0.03433137592192169
+S2,+all three,45,Lasso,kfold,0.014767743209082385
+S2,+all three,45,BayesianRidge,lodo,0.062328211898392875
+S2,+all three,45,BayesianRidge,kfold,0.014645296887407264
+S2,+interactions (top 3),28,Ridge,lodo,0.06617346581715929
+S2,+interactions (top 3),28,Ridge,kfold,0.013693141305794344
+S2,+interactions (top 5),35,Ridge,lodo,0.06015191076903985
+S2,+interactions (top 5),35,Ridge,kfold,0.012153774810312946
+S2,+interactions (top 8),53,Ridge,lodo,0.07080364225386106
+S2,+interactions (top 8),53,Ridge,kfold,0.008806716155896335
+S2,day-centred features,25,Ridge,lodo,0.04751229138559793
+S2,day-centred features,25,Ridge,kfold,0.03778552114481167
+S2,day-centred features,25,Lasso,lodo,0.04783850775552482
+S2,day-centred features,25,Lasso,kfold,0.036523074803071376
+S2,day-centred features,25,BayesianRidge,lodo,0.048307311601279906
+S2,day-centred features,25,BayesianRidge,kfold,0.04104685856924299

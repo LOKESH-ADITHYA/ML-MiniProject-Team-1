@@ -1,0 +1,11 @@
+subject,method,k,features
+S1,forward,10.0,"L_peak_pf, R_step_time, emg3, emg7, emg8, emg9, emg12, emg13, emg14, emg15"
+S1,mi,10.0,"L_peak_pf, L_step_time, R_peak_pf, R_step_time, step_width, emg2, emg3, emg7, emg11, emg14"
+S1,rfe,10.0,"L_peak_pf, R_peak_df, emg3, emg5, emg6, emg8, emg9, emg12, emg13, emg15"
+S1,stability,,"L_peak_df, L_peak_pf, R_step_time, emg2, emg3, emg5, emg7, emg9, emg12, emg15"
+S1,ard,,"L_peak_pf, R_peak_df, R_step_time, step_width, emg2, emg3, emg5, emg6, emg7, emg8, emg9, emg10, emg12, emg13, emg14, emg15"
+S2,forward,10.0,"L_peak_pf, L_step_time, R_peak_pf, R_step_time, emg2, emg3, emg4, emg10, emg13, emg16"
+S2,mi,10.0,"L_peak_df, L_peak_pf, R_peak_pf, step_width, emg2, emg3, emg9, emg10, emg11, emg12"
+S2,rfe,10.0,"L_peak_pf, L_step_time, R_step_time, emg2, emg9, emg10, emg12, emg13, emg14, emg16"
+S2,stability,,"L_peak_df, L_peak_pf, R_peak_pf, emg2, emg4, emg10, emg11, emg16"
+S2,ard,,"L_peak_df, L_peak_pf, R_peak_pf, emg2, emg4, emg7, emg9, emg10, emg12, emg13, emg14, emg16"
