@@ -1,0 +1,9 @@
+subject,feature_set,protocol,our_best_mse,our_best_neurons,paper_nn_mse,paper_linreg_mse,paper_const_mse
+S1,all,kfold,0.0089,10,0.0089,0.0089,0.0657
+S1,step+emg,kfold,0.0099,10,0.0104,0.0089,0.0657
+S1,step,kfold,0.0153,4,0.0138,0.02,0.0657
+S1,emg,kfold,0.0122,2,0.0118,0.0158,0.0657
+S2,all,kfold,0.0115,2,0.0301,0.0176,0.0465
+S2,step+emg,kfold,0.0119,6,0.0313,0.0168,0.0465
+S2,step,kfold,0.0161,3,0.0233,0.0217,0.0465
+S2,emg,kfold,0.0135,6,0.0199,0.0203,0.0465
