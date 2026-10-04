@@ -23,7 +23,7 @@ import pandas as pd
 
 from data import SUBJECTS
 from evaluation import NOISE_FLOOR, evaluate
-from tuning import BUILDERS, optuna_model
+from tuning import BUILDERS, DEFAULTS, optuna_model
 
 RES = ROOT / "results" / "tuning"
 FIG = ROOT / "results" / "figures"
@@ -33,15 +33,6 @@ QUICK = "--quick" in sys.argv
 N_TRIALS = 8 if QUICK else 30
 FEATURES = "all"
 
-# untuned reference settings (sensible defaults, not tuned)
-DEFAULTS = {
-    "nn_paper": {"neurons": 3, "weight_decay": 0.01, "lr": 0.01, "epochs": 1000, "activation": "tanh"},
-    "nn_extended": {"layers": 2, "width": 16, "weight_decay": 0.01, "lr": 0.01, "epochs": 1000,
-                    "activation": "tanh", "dropout": 0.1},
-    "rf": {"n_estimators": 300, "max_depth": None, "min_samples_leaf": 1, "max_features": 1.0},
-    "et": {"n_estimators": 300, "max_depth": None, "min_samples_leaf": 1, "max_features": 1.0},
-    "gb": {"learning_rate": 0.1, "max_depth": 3, "n_estimators": 100, "subsample": 1.0, "min_samples_leaf": 1},
-}
 NAMES = {"nn_paper": "NN (1 hidden, paper-style)", "nn_extended": "MLP (1-3 layers)",
          "rf": "Random Forest", "et": "Extra Trees", "gb": "Gradient Boosting"}
 

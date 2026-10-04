@@ -38,14 +38,17 @@ class OptunaTuned(BaseEstimator, RegressorMixin):
     build      function(params: dict) -> fresh estimator
     space      function(trial) -> params dict (uses trial.suggest_*)
     n_trials   Optuna trials per fit (per outer fold)
+    defaults   optional params dict tried as the FIRST trial, so on the training days
+               tuning can never end up worse than the default settings
     """
     needs_groups = True  # evaluation.evaluate passes training days as `groups`
 
-    def __init__(self, build, space, n_trials=30, seed=0):
+    def __init__(self, build, space, n_trials=30, seed=0, defaults=None):
         self.build = build
         self.space = space
         self.n_trials = n_trials
         self.seed = seed
+        self.defaults = defaults
 
     def _inner_splits(self, X, groups):
         if groups is not None and len(np.unique(groups)) >= 2:
@@ -66,9 +69,12 @@ class OptunaTuned(BaseEstimator, RegressorMixin):
 
         sampler = optuna.samplers.TPESampler(seed=self.seed)
         self.study_ = optuna.create_study(direction="minimize", sampler=sampler)
+        if self.defaults:
+            self.study_.enqueue_trial(self.defaults)
         self.study_.optimize(objective, n_trials=self.n_trials)
         self.best_params_ = self.study_.best_params
         self.best_inner_mse_ = self.study_.best_value
+        self.default_inner_mse_ = self.study_.trials[0].value if self.defaults else None
         self.model_ = self.build(self.best_params_).fit(X, y)
         return self
 
@@ -96,7 +102,7 @@ def space_nn_extended(t):
 
 def space_forest(t):
     return {"n_estimators": t.suggest_int("n_estimators", 100, 500, step=50),
-            "max_depth": t.suggest_int("max_depth", 3, 12),
+            "max_depth": t.suggest_categorical("max_depth", [None, 3, 5, 8, 12]),  # None = no limit
             "min_samples_leaf": t.suggest_int("min_samples_leaf", 1, 10),
             "max_features": t.suggest_categorical("max_features", ["sqrt", 0.33, 0.5, 1.0])}
 
@@ -109,22 +115,43 @@ def space_gb(t):
             "min_samples_leaf": t.suggest_int("min_samples_leaf", 1, 10)}
 
 
+# ------------------------------------------------------------------ seed averaging
+class SeedAveraged(BaseEstimator, RegressorMixin):
+    """Average the predictions of the same model trained with several random seeds.
+    Small networks on ~180 rows are unstable; averaging (plan: 'average several seeds')
+    makes both the tuning signal and the final predictions steadier."""
+
+    def __init__(self, make, n_seeds=3):
+        self.make = make          # function(seed) -> fresh estimator
+        self.n_seeds = n_seeds
+
+    def fit(self, X, y):
+        self.models_ = [self.make(s).fit(X, y) for s in range(self.n_seeds)]
+        return self
+
+    def predict(self, X):
+        return np.mean([m.predict(X) for m in self.models_], axis=0)
+
+
 # ------------------------------------------------------------------ reference builders
 # sklearn stand-ins so this file runs on its own. Swap in the PyTorch builders from
 # models_nn.py once they exist (same parameter names).
+NN_SEEDS = 3
+
+
 def build_nn_paper(p):
-    """Full-batch L-BFGS (closest sklearn analogue to MATLAB's trainbr); lr is unused by L-BFGS.
-    sklearn's alpha is summed over the batch, so it needs larger values than torch weight decay;
-    we rescale: alpha = weight_decay * 100."""
-    return make_pipeline(StandardScaler(), MLPRegressor(
+    """Full-batch L-BFGS (closest sklearn analogue to MATLAB's trainbr), averaged over NN_SEEDS seeds.
+    lr is unused by L-BFGS (it matters for the torch version). sklearn's alpha is summed over the
+    batch, so it needs larger values than torch weight decay: alpha = weight_decay * 100."""
+    return SeedAveraged(lambda s: make_pipeline(StandardScaler(), MLPRegressor(
         hidden_layer_sizes=(p["neurons"],), activation=p["activation"], alpha=p["weight_decay"] * 100,
-        max_iter=p["epochs"], solver="lbfgs", random_state=0))
+        max_iter=p["epochs"], solver="lbfgs", random_state=s)), NN_SEEDS)
 
 
 def build_nn_extended(p):  # sklearn MLP has no dropout; the torch version should use p["dropout"]
-    return make_pipeline(StandardScaler(), MLPRegressor(
+    return SeedAveraged(lambda s: make_pipeline(StandardScaler(), MLPRegressor(
         hidden_layer_sizes=(p["width"],) * p["layers"], activation=p["activation"], alpha=p["weight_decay"] * 100,
-        max_iter=p["epochs"], solver="lbfgs", random_state=0))
+        max_iter=p["epochs"], solver="lbfgs", random_state=s)), NN_SEEDS)
 
 
 def build_rf(p):
@@ -138,6 +165,16 @@ def build_et(p):
 def build_gb(p):
     return GradientBoostingRegressor(random_state=0, **p)
 
+
+# default settings: tried as trial 1 and used as the untuned baseline. All lie inside the spaces.
+DEFAULTS = {
+    "nn_paper": {"neurons": 3, "weight_decay": 0.01, "lr": 0.01, "epochs": 1000, "activation": "tanh"},
+    "nn_extended": {"layers": 2, "width": 16, "weight_decay": 0.01, "lr": 0.01, "epochs": 1000,
+                    "activation": "tanh", "dropout": 0.1},
+    "rf": {"n_estimators": 300, "max_depth": None, "min_samples_leaf": 1, "max_features": 1.0},
+    "et": {"n_estimators": 300, "max_depth": None, "min_samples_leaf": 1, "max_features": 1.0},
+    "gb": {"learning_rate": 0.1, "max_depth": 3, "n_estimators": 100, "subsample": 1.0, "min_samples_leaf": 1},
+}
 
 SPACES = {
     "nn_paper": space_nn_paper,
@@ -155,6 +192,7 @@ BUILDERS = {
 }
 
 
-def optuna_model(name, n_trials=30, seed=0, build=None):
+def optuna_model(name, n_trials=30, seed=0, build=None, start_from_defaults=True):
     """Factory for evaluate(..., protocol="nested"). Pass `build` to use a custom (e.g. torch) builder."""
-    return lambda: OptunaTuned(build or BUILDERS[name], SPACES[name], n_trials=n_trials, seed=seed)
+    d = DEFAULTS[name] if start_from_defaults else None
+    return lambda: OptunaTuned(build or BUILDERS[name], SPACES[name], n_trials=n_trials, seed=seed, defaults=d)
