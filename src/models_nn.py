@@ -34,7 +34,7 @@ def _as_tuple(h):
     return tuple(int(v) for v in h)
 
 
-class SeedAveragedMLP(BaseEstimator, RegressorMixin):
+class SeedAveragedMLP(RegressorMixin, BaseEstimator):
     """Average of several small MLPs trained with L-BFGS + L2 penalty."""
 
     def __init__(self, hidden_layer_sizes=(3,), alpha=1.0, activation="tanh",
