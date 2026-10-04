@@ -1,0 +1,5 @@
+subject,protocol,model,feature_set,mse,noise_floor,times_noise_floor
+S1,kfold,gp,all,0.0079451844624185,0.0025,3.2
+S1,lodo,ridge,all,0.0142580194642963,0.0025,5.7
+S2,kfold,extended_mlp,step+emg,0.0096773714090551,0.0025,3.9
+S2,lodo,gradient_boosting,all,0.0251469034362318,0.0025,10.1
