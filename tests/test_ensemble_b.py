@@ -52,3 +52,13 @@ def test_ranking_metrics_perfect():
     y = np.arange(36.0)
     r = ranking_metrics(y, y)
     assert r["spearman"] == 1.0 and r["best5_in_pred_top10"] == 1.0
+
+def test_topk_tuner_averages_models():
+    from sklearn.linear_model import Ridge
+    from tuning_b import TopKOptunaTuned
+    X, y, day = toy()
+    space = lambda t: {"alpha": t.suggest_float("alpha", 1e-3, 10, log=True)}
+    m = TopKOptunaTuned(lambda p: Ridge(**p), space, n_trials=6, top_k=3)
+    m.fit(X.values, y, groups=day)
+    assert len(m.models_) == 3 and m.predict(X.values).shape == (len(y),)
+    assert clone(m).top_k == 3
